@@ -1,0 +1,1 @@
+web: gunicorn dockerlearn505.wsgi --log-file -

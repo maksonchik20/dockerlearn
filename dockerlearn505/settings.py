@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -76,16 +77,17 @@ WSGI_APPLICATION = 'dockerlearn505.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'dockerlearn',
-        'USER': 'root',
-        'PASSWORD': '1234567',
-        'HOST': 'localhost2',
-        'PORT': '3306',
+DATABASES = {     
+		'default': {
+      	'ENGINE': 'django.db.backends.postgresql',
+      	'HOST' : os.environ.get('POSTGRES_HOST', 'ec2-44-207-253-50.compute-1.amazonaws.com'),
+      	'NAME': os.environ.get('POSTGRES_DB', 'ddbstmmms8j5ku'),
+      	'USER': os.environ.get('POSTGRES_USER', 'abxqwhgywwbvdd'),
+      	'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'e9157e2d91ce2f3158bec0718ceac55236c64ce5994f08e52afe9d9399347e1a'),
+      	'PORT': os.environ.get('POSTGRES_PORT', '5432'),
     }
 }
+
 
 
 # Password validation
